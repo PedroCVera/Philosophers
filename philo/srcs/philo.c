@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:23:56 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/11/22 14:30:33 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/11/29 17:25:13 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,18 @@ int	checker(int argc, char **argv)
 	return (0);
 }
 
-int	processnum(int argc, char **argv, t_info *p)
+int	processnum(int argc, char **argv, t_info *i)
 {
-	p->philo_count = ft_atoi(argv[1]);
-	p->tt_d = ft_atoi(argv[2]);
-	p->tt_e = ft_atoi(argv[3]);
-	p->tt_s = ft_atoi(argv[4]);
-	p->st = clock();
+	i->philo_nbr = ft_atoi_phil(argv[1]);
+	i->tt_d = ft_atoi_phil(argv[2]);
+	i->tt_e = ft_atoi_phil(argv[3]);
+	i->tt_s = ft_atoi_phil(argv[4]);
+	i->st = clock();
 	if (argc == 6)
-		p->philo_eat = ft_atoi(argv[5]);
+		i->philo_eat = ft_atoi_phil(argv[5]);
 	else
-		p->philo_eat = -3;
-	if (!p->philo_count|| !p->tt_d|| !p->tt_d || !p->philo_eat || !p->tt_e)
+		i->philo_eat = -3;
+	if (!i->philo_nbr || !i->tt_d|| !i->tt_d || !i->philo_eat || !i->tt_e)
 	{
 		printf("0 < num < 2147483648 UwU\n");
 		return (1);
@@ -56,7 +56,9 @@ int	processnum(int argc, char **argv, t_info *p)
 
 int	main(int argc, char **argv)
 {
-	t_info	p;
+	t_info	i;
+	t_forks	*f;
+	t_philo	*p
 	
 	if (argc != 5 && argc != 6)
 	{
@@ -65,5 +67,7 @@ int	main(int argc, char **argv)
 	}
 	if (checker(argc, argv) == 1 || processnum(argc,argv, &p) != 0)
 		return (1);
-	
+	if (!create_forks(&f, i.philo_nbr))
+		return (1);
+	init_mutex(p, i.philo_nbr)
 }

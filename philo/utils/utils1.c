@@ -6,13 +6,13 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:27:41 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/11/22 14:33:56 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/11/29 17:30:55 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-int	ft_atoi(const char *str)
+int	ft_atoi_phil(const char *str)
 {
 	int			i;
 	int			j;
@@ -31,15 +31,13 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
-	{
-		if (result > 2147483647)
-			return (0);
 		result = (result * 10) + (j * (str[i++] - '0'));
-	}
+	if (result > 2147483647 || result < 0)
+			return (0);
 	return (result);
 }
 
-int	clock(void)
+int	cock(void)
 {
 	struct timeval time;
 
