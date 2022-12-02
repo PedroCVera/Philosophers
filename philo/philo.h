@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:22:12 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/11/29 17:30:48 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/02 17:22:31 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,29 @@ typedef struct s_philo
 	unsigned long	last_eat;
 	int				times_eat;
 	int				nbr;
-	t_forks			r;
-	t_forks			l;
+	t_forks			R;
+	t_forks			L;
 	pthread_mutex_t	*print;
 	pthread_mutex_t	*d_check;
 	int				*dead;
-	t_info			*info;
+	t_info			*data;
 }					t_philo;
+
+
+
+//	srcs/checker.c
+
+int	processnum(int argc, char **argv, t_info *i);
+int	checker(int argc, char **argv);
 
 //	srcs/init_philo.c
 
-int	creat_forks(t_forks **forks, int philo_nbr)
+int	create_forks(t_forks **forks, int philo_nbr);
+int	philo_init(t_forks **f, t_info *i, t_philo **p, int *dead);
 
 //	utils/utils1.c
 
 int	ft_atoi_phil(const char *str);
-int	cock(void);
+int	time(void);
 
 #endif
