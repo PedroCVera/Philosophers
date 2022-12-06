@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:46:15 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/05 17:32:03 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/06 16:44:52 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,10 @@ int	philo_init(t_forks **f, t_info *i, t_philo **p, int *dead)
 {
 	int	ind;
 
-	printf("ola\n");
 	if (philo_allocation(f, i, p, dead) || mutex_init(p, i->philo_nbr))
 		return (1);
 	ind = -1;
 	i->st = time_philo();
-	printf("ola\n");
 	while (++ind < i->philo_nbr)
 	{
 		if (pthread_create(&((*p)[ind].id), NULL, philo_stuff, \

@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   routine_utils1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 17:15:27 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/06 17:54:20 by pcoimbra         ###   ########.fr       */
+/*   Created: 2022/12/06 17:33:41 by pcoimbra          #+#    #+#             */
+/*   Updated: 2022/12/06 18:12:55 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-void	*philo_stuff(void *cenas)
+void	philo_print(t_philo *p, char *str)
 {
-	t_philo *p;
+	pthread_mutex_lock(p->print);
+	printf("%lu %d %s\n", timenow(p), p->nbr, str);
+	pthread_mutex_unlock(p->print);
+}
 
-	p = (t_philo *)cenas;
-	while (checker_deader(p) == 0)
-	{
-		yeeat(p);
-		if (p->data->philo_eat != -3 && p->times_eat == p->data->philo_eat)
-			break ;
-		if (checker_deader(p) == 0)
-			print_philo(p, "is sleeping");
-		xonar(p, p->data->tt_s);
-	}
+void	print_eat(t_philo *p)
+{
+		philo_print(p, "has taken a fork");
+		philo_print(p, "is eating");
 }

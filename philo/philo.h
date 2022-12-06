@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:22:12 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/05 17:22:49 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:54:02 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,15 @@ int	time_philo(void);
 //	routine.c
 
 void	*philo_stuff(void *philo);
+
+//	routine_utils.c
+
+int	checker_deader(t_philo *p);
+int	xonar(t_philo *philo, int time);
+int	yeeat(t_philo *p);
+
+//	routine_utils1.c
+
+void	philo_print(t_philo *p, char *str);
 
 #endif
