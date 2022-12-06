@@ -6,10 +6,20 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:15:27 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/02 17:16:01 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:49:27 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-int	philo_routine(void)
+void	*philo_stuff(void *cenas)
+{
+	t_philo *philo;
+
+	philo = (t_philo *)cenas;
+	while (checker_deader(philo) == 0)
+	{
+		xonar(philo);
+		wife_beater();
+	}
+}

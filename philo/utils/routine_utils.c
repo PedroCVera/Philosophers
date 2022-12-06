@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   routine_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 12:23:56 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/05 17:29:48 by pcoimbra         ###   ########.fr       */
+/*   Created: 2022/12/05 17:37:33 by pcoimbra          #+#    #+#             */
+/*   Updated: 2022/12/05 17:49:43 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-int	main(int argc, char **argv)
+int	checker_deader(t_philo *p)
 {
-	t_info	i;
-	t_forks	*f;
-	t_philo	*p;
-	int		dead;
-	int		ind;
-	
-	dead = 0;
-	if (argc != 5 && argc != 6)
+	pthread_mutex_lock(p->d_check);
+	if (p->dead == 1)
 	{
-		printf("Whoopsie, you did an upsie\n");
+		pthread_mutex_unlock(p->d_check);
 		return (1);
 	}
-	if (checker(argc, argv) == 1 || processnum(argc, argv, &i) != 0)
+	if ((time_now(p) - p->last_eat) >= p->data->tt_d)
+	{
+		p->dead = 1;
+		pthread_mutex_unlock(p->d_check);
 		return (1);
-	if (create_forks(&f, i.philo_nbr))
-		return (1);
-	philo_init(&f, &i, &p, &dead);
-	ind = -1;
-	while (++ind < i.philo_nbr)
-		pthread_join(p[ind].id, NULL);
-//	end_free(p, f, i);
+	}
+	pthread_mutex_unlock(p->d_check);
+	return (0);
+}
+
+int	xonar(t_philo *philo)
+{
+	
 }

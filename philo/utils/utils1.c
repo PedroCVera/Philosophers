@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:27:41 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/02 17:14:08 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:17:35 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_atoi_phil(const char *str)
 	return (result);
 }
 
-int	time(void)
+int	time_philo(void)
 {
 	struct timeval time;
 
@@ -47,5 +47,5 @@ int	time(void)
 
 int	time_now(t_philo *p)
 {
-	return (cock() - p->data->st);
+	return (time_philo() - p->data->st);
 }
