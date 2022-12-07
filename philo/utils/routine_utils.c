@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:37:33 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/06 18:12:12 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/07 16:20:21 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 void	fork_taker(t_philo *p)
 {
-	while (check_add_death(p) == 0)
+	while (checker_deader(p) == 0)
 	{
 		pthread_mutex_lock(p->R.check);
 		if (p->R.fork == 0)
 		{
-			p->R.fork = 1;
+			*(p->R.fork) = 1;
 			pthread_mutex_unlock(p->R.check);
 			break ;
 		}
 		pthread_mutex_unlock(p->R.check);
 	}
-	if (check_death(p) == 0)
+	if (checker_deader(p) == 0)
 		philo_print(p, "has taken a fork\n");
-	while (check_add_death(p) == 0)
+	while (checker_deader(p) == 0)
 	{
 		pthread_mutex_lock(p->L.check);
 		if (p->L.fork == 0)
 		{
-			p->L.fork = 1;
+			*(p->L.fork) = 1;
 			pthread_mutex_unlock(p->L.check);
 			break ;
 		}
@@ -40,7 +40,7 @@ void	fork_taker(t_philo *p)
 	}
 }
 
-void	philo_drop_forks(t_philo *p)
+void	drop_forks(t_philo *p)
 {
 	pthread_mutex_lock(p->L.check);
 	p->L.fork = 0;
@@ -56,7 +56,7 @@ int	yeeat(t_philo *p)
 	if (checker_deader(p) == 0)
 		print_eat(p);
 	p->times_eat++;
-	p->times_eat = time_now(p);
+	p->last_eat = time_now(p);
 	if (xonar(p, p->data->tt_e) == 1)
 		return (1);
 	drop_forks(p);
@@ -66,22 +66,26 @@ int	yeeat(t_philo *p)
 int	checker_deader(t_philo *p)
 {
 	pthread_mutex_lock(p->d_check);
-	if (p->dead == 1)
+	if (*(p->dead) == 1)
 	{
 		pthread_mutex_unlock(p->d_check);
 		return (1);
 	}
+	printf("ola:%d\n", p->nbr);
 	if ((time_now(p) - p->last_eat) >= p->data->tt_d)
 	{
-		p->dead = 1;
+		*(p->dead) = 1;
 		pthread_mutex_unlock(p->d_check);
+		printf("starting_time:%lu my time:%lu\n", p->data->st, time_now(p));
+		printf("ola:%d\n", p->nbr);
 		return (1);
 	}
+	printf("ola:%d\n", p->nbr);
 	pthread_mutex_unlock(p->d_check);
 	return (0);
 }
 
-int	xonar(t_philo *philo, int time)
+int	xonar(t_philo *philo, unsigned long time)
 {
 	unsigned long	timepassed;
 	unsigned long	start;

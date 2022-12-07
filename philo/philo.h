@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:22:12 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/06 17:54:02 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/07 16:09:29 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ typedef struct s_fork
 
 typedef struct s_info
 {
-	int	philo_nbr;
-	int	tt_d;
-	int	tt_e;
-	int	tt_s;
-	int	philo_eat;
-	int	st;
+	int				philo_nbr;
+	unsigned long	tt_d;
+	int				tt_e;
+	int				tt_s;
+	int				philo_eat;
+	unsigned long	st;
 }		t_info;
 
 typedef struct s_philo
@@ -65,8 +65,9 @@ int	philo_init(t_forks **f, t_info *i, t_philo **p, int *dead);
 
 //	utils/utils1.c
 
-int	ft_atoi_phil(const char *str);
-int	time_philo(void);
+int				ft_atoi_phil(const char *str);
+unsigned long	time_philo(void);
+unsigned long	time_now(t_philo *p);
 
 //	routine.c
 
@@ -75,11 +76,12 @@ void	*philo_stuff(void *philo);
 //	routine_utils.c
 
 int	checker_deader(t_philo *p);
-int	xonar(t_philo *philo, int time);
+int	xonar(t_philo *philo, unsigned long time);
 int	yeeat(t_philo *p);
 
 //	routine_utils1.c
 
 void	philo_print(t_philo *p, char *str);
+void	print_eat(t_philo *p);
 
 #endif
