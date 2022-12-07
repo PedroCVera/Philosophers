@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:15:27 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/07 16:19:09 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/07 18:55:08 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	*philo_stuff(void *cenas)
 	p = (t_philo *)cenas;
 	while (checker_deader(p) == 0)
 	{
-		printf("ola:%d\n", p->nbr);
+		printf("ananas%d\n", p->nbr);
 		yeeat(p);
-		printf("ola:%d\n", p->nbr);
+		printf("mango\n");
 		if (p->data->philo_eat != -3 && p->times_eat == p->data->philo_eat)
 			break ;
 		if (checker_deader(p) == 0)

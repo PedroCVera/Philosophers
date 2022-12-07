@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:37:33 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/07 16:20:21 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/07 19:08:29 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	fork_taker(t_philo *p)
 		pthread_mutex_lock(p->R.check);
 		if (p->R.fork == 0)
 		{
-			*(p->R.fork) = 1;
+			p->R.fork = 1;
 			pthread_mutex_unlock(p->R.check);
 			break ;
 		}
@@ -32,7 +32,7 @@ void	fork_taker(t_philo *p)
 		pthread_mutex_lock(p->L.check);
 		if (p->L.fork == 0)
 		{
-			*(p->L.fork) = 1;
+			p->L.fork = 1;
 			pthread_mutex_unlock(p->L.check);
 			break ;
 		}
@@ -71,16 +71,15 @@ int	checker_deader(t_philo *p)
 		pthread_mutex_unlock(p->d_check);
 		return (1);
 	}
-	printf("ola:%d\n", p->nbr);
+	printf("adeus:%d\n", p->nbr);
 	if ((time_now(p) - p->last_eat) >= p->data->tt_d)
 	{
 		*(p->dead) = 1;
+		printf("eu nao devia estar aqui\n");
 		pthread_mutex_unlock(p->d_check);
-		printf("starting_time:%lu my time:%lu\n", p->data->st, time_now(p));
-		printf("ola:%d\n", p->nbr);
 		return (1);
 	}
-	printf("ola:%d\n", p->nbr);
+	printf("geronimo:%d\n", p->nbr);
 	pthread_mutex_unlock(p->d_check);
 	return (0);
 }

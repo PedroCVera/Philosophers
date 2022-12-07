@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:22:12 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/07 16:09:29 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/07 19:08:03 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 typedef struct s_fork
 {
-	int				*fork;
+	int				fork;
 	pthread_mutex_t	*check;
 }					t_forks;
 

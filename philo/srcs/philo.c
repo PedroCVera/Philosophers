@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:23:56 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/07 16:19:18 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/07 18:52:59 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int argc, char **argv)
 		return (1);
 	philo_init(&f, &i, &p, &dead);
 	ind = -1;
+	printf("Banana\n");
 	while (++ind < i.philo_nbr)
 		pthread_join(p[ind].id, NULL);
 //	end_free(p, f, i);
