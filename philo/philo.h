@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:22:12 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/09 16:02:27 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:12:01 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,17 @@ typedef struct s_philo
 
 //	srcs/philo.c
 
-void	*philo_stuff(void *philo);
+void			*philo_stuff(void *philo);
 
 //	srcs/checker.c
 
-int	processnum(int argc, char **argv, t_info *i);
-int	checker(int argc, char **argv);
+int				processnum(int argc, char **argv, t_info *i);
+int				checker(int argc, char **argv);
 
 //	srcs/init_philo.c
 
-int	create_forks(t_forks **forks, int philo_nbr);
-int	philo_init(t_forks **f, t_info *i, t_philo **p, int *dead);
+int				create_forks(t_forks **forks, int philo_nbr);
+int				philo_init(t_forks **f, t_info *i, t_philo **p, int *dead);
 
 //	utils/utils1.c
 
@@ -73,13 +73,14 @@ unsigned long	time_now(t_philo *p);
 
 //	routine_utils.c
 
-int	checker_deader(t_philo *p);
 int	xonar(t_philo *philo, unsigned long time);
 int	yeeat(t_philo *p);
 
 //	routine_utils1.c
 
-void	philo_print(t_philo *p, char *str);
-void	print_eat(t_philo *p);
+int				check_dead(t_philo *p);
+int				checker_deader(t_philo *p);
+void			philo_print(t_philo *p, char *str);
+void			print_eat(t_philo *p);
 
 #endif

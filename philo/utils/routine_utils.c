@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:37:33 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/09 15:59:39 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:10:15 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	fork_taker(t_philo *p)
 		}
 		pthread_mutex_unlock(p->R.check);
 	}
-	if (checker_deader(p) == 0)
+	if (check_dead(p) == 0)
 		philo_print(p, "has taken a fork");
 	while (checker_deader(p) == 0)
 	{
@@ -53,31 +53,13 @@ void	drop_forks(t_philo *p)
 int	yeeat(t_philo *p)
 {
 	fork_taker(p);
-	if (checker_deader(p) == 0)
+	if (check_dead(p) == 0)
 		print_eat(p);
 	p->times_eat++;
 	p->last_eat = time_now(p);
 	if (xonar(p, p->data->tt_e) == 1)
 		return (1);
 	drop_forks(p);
-	return (0);
-}
-
-int	checker_deader(t_philo *p)
-{
-	pthread_mutex_lock(p->d_check);
-	if (*(p->dead) == 1)
-	{
-		pthread_mutex_unlock(p->d_check);
-		return (1);
-	}
-	if ((time_now(p) - p->last_eat) >= p->data->tt_d)
-	{
-		*(p->dead) = 1;
-		pthread_mutex_unlock(p->d_check);
-		return (1);
-	}
-	pthread_mutex_unlock(p->d_check);
 	return (0);
 }
 
@@ -90,7 +72,7 @@ int	xonar(t_philo *philo, unsigned long time)
 	timepassed = 0;
 	while (timepassed <= time && !checker_deader(philo))
 	{
-		if (!checker_deader(philo))
+		if (!check_dead(philo))
 		{
 			usleep(100);
 			timepassed = time_now(philo) - start;

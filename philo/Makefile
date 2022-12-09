@@ -6,12 +6,12 @@
 #    By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:11:28 by pcoimbra          #+#    #+#              #
-#    Updated: 2022/12/09 16:02:45 by pcoimbra         ###   ########.fr        #
+#    Updated: 2022/12/09 17:12:42 by pcoimbra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror -g -fsanitize=thread
+CFLAGS		=	-Wall -Wextra -Werror -g # -fsanitize=thread
 RM			=	rm -f
 
 NAME		=	philo
