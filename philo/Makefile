@@ -6,7 +6,7 @@
 #    By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:11:28 by pcoimbra          #+#    #+#              #
-#    Updated: 2022/12/07 19:05:51 by pcoimbra         ###   ########.fr        #
+#    Updated: 2022/12/09 16:02:45 by pcoimbra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,6 @@ INCLUDE		=	-I ./ -pthread
 SRCS_		=	srcs/philo.c \
 					utils/utils1.c \
 					srcs/init_philo.c \
-					srcs/routine.c \
 					srcs/checker.c \
 					utils/routine_utils1.c \
 					utils/routine_utils.c 

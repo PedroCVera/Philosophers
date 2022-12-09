@@ -6,11 +6,35 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:23:56 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/07 18:52:59 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:57:56 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
+
+#include "../philo.h"
+
+void	*philo_stuff(void *cenas)
+{
+	t_philo *p;
+
+	p = (t_philo *)cenas;
+	p->last_eat = 0;
+	if (!(p->nbr % 2))
+		usleep(10000);
+	while (checker_deader(p) == 0)
+	{
+		yeeat(p);
+		if (p->data->philo_eat != -3 && p->times_eat == p->data->philo_eat)
+			break ;
+		if (checker_deader(p) == 0)
+			philo_print(p, "is sleeping");
+		xonar(p, p->data->tt_s);
+		if (checker_deader(p) == 0)
+			philo_print(p, "is sleeping");
+	}
+	return (NULL);
+}
 
 int	main(int argc, char **argv)
 {
@@ -32,7 +56,6 @@ int	main(int argc, char **argv)
 		return (1);
 	philo_init(&f, &i, &p, &dead);
 	ind = -1;
-	printf("Banana\n");
 	while (++ind < i.philo_nbr)
 		pthread_join(p[ind].id, NULL);
 //	end_free(p, f, i);

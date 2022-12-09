@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:22:12 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/07 19:08:03 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:02:27 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ typedef struct s_philo
 	t_info			*data;
 }					t_philo;
 
+//	srcs/philo.c
 
+void	*philo_stuff(void *philo);
 
 //	srcs/checker.c
 
@@ -68,10 +70,6 @@ int	philo_init(t_forks **f, t_info *i, t_philo **p, int *dead);
 int				ft_atoi_phil(const char *str);
 unsigned long	time_philo(void);
 unsigned long	time_now(t_philo *p);
-
-//	routine.c
-
-void	*philo_stuff(void *philo);
 
 //	routine_utils.c
 

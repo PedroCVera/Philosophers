@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:37:33 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/07 19:08:29 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:59:39 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	fork_taker(t_philo *p)
 		pthread_mutex_unlock(p->R.check);
 	}
 	if (checker_deader(p) == 0)
-		philo_print(p, "has taken a fork\n");
+		philo_print(p, "has taken a fork");
 	while (checker_deader(p) == 0)
 	{
 		pthread_mutex_lock(p->L.check);
@@ -71,15 +71,12 @@ int	checker_deader(t_philo *p)
 		pthread_mutex_unlock(p->d_check);
 		return (1);
 	}
-	printf("adeus:%d\n", p->nbr);
 	if ((time_now(p) - p->last_eat) >= p->data->tt_d)
 	{
 		*(p->dead) = 1;
-		printf("eu nao devia estar aqui\n");
 		pthread_mutex_unlock(p->d_check);
 		return (1);
 	}
-	printf("geronimo:%d\n", p->nbr);
 	pthread_mutex_unlock(p->d_check);
 	return (0);
 }
