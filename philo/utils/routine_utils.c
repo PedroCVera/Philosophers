@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:37:33 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/13 16:22:48 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:42:19 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void	fork_taker(t_philo *p)
 void	drop_forks(t_philo *p)
 {
 	pthread_mutex_lock(p->L.check);
-	p->L.fork = 0;
+	*(p->L.fork) = 0;
 	pthread_mutex_unlock(p->L.check);
 	pthread_mutex_lock(p->R.check);
-	p->R.fork = 0;
+	*(p->R.fork) = 0;
 	pthread_mutex_unlock(p->R.check);
 }
 

@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:23:56 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/13 16:33:28 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:43:01 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	*philo_stuff(void *cenas)
 		usleep(10000);
 	while (checker_deader(p) == 0)
 	{
-		if (p->times_eat == 2)
-			printf("ola\n");
 		yeeat(p);
 		if (p->data->philo_eat != -3 && p->times_eat == p->data->philo_eat)
 			break ;
