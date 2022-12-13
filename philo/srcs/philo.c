@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:23:56 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/13 17:11:36 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:01:43 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*philo_stuff(void *cenas)
 {
-	t_philo *p;
+	t_philo	*p;
 
 	p = (t_philo *)cenas;
 	p->last_eat = 0;
@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 	t_philo	*p;
 	int		dead;
 	int		ind;
-	
+
 	dead = 0;
 	if (argc != 5 && argc != 6)
 	{

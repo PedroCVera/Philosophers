@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:22:12 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/13 16:07:13 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/13 17:57:30 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,19 @@ typedef struct s_philo
 	unsigned long	last_eat;
 	int				times_eat;
 	int				nbr;
-	t_forks			R;
-	t_forks			L;
+	t_forks			r;
+	t_forks			l;
 	pthread_mutex_t	*print;
 	pthread_mutex_t	*d_check;
 	int				*dead;
 	t_info			*data;
 }					t_philo;
+
+//	errors/error_handler1.c
+
+int				error_mutexes(pthread_mutex_t *print, pthread_mutex_t *dead);
+int				error_forks(t_forks *forks, pthread_mutex_t *check);
+void			end_free(t_philo *p, t_forks *forks, t_info d);
 
 //	srcs/philo.c
 

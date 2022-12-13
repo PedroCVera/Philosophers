@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:37:33 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/13 16:42:19 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:00:45 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,38 +16,38 @@ void	fork_taker(t_philo *p)
 {
 	while (checker_deader(p) == 0)
 	{
-		pthread_mutex_lock(p->R.check);
-		if (*(p->R.fork) == 0)
+		pthread_mutex_lock(p->r.check);
+		if (*(p->r.fork) == 0)
 		{
-			*(p->R.fork) = 1;
-			pthread_mutex_unlock(p->R.check);
+			*(p->r.fork) = 1;
+			pthread_mutex_unlock(p->r.check);
 			break ;
 		}
-		pthread_mutex_unlock(p->R.check);
+		pthread_mutex_unlock(p->r.check);
 	}
 	if (check_dead(p) == 0)
 		philo_print(p, "has taken a fork");
 	while (checker_deader(p) == 0)
 	{
-		pthread_mutex_lock(p->L.check);
-		if (*(p->L.fork) == 0)
+		pthread_mutex_lock(p->l.check);
+		if (*(p->l.fork) == 0)
 		{
-			*(p->L.fork) = 1;
-			pthread_mutex_unlock(p->L.check);
+			*(p->l.fork) = 1;
+			pthread_mutex_unlock(p->l.check);
 			break ;
 		}
-		pthread_mutex_unlock(p->L.check);
+		pthread_mutex_unlock(p->l.check);
 	}
 }
 
 void	drop_forks(t_philo *p)
 {
-	pthread_mutex_lock(p->L.check);
-	*(p->L.fork) = 0;
-	pthread_mutex_unlock(p->L.check);
-	pthread_mutex_lock(p->R.check);
-	*(p->R.fork) = 0;
-	pthread_mutex_unlock(p->R.check);
+	pthread_mutex_lock(p->l.check);
+	*(p->l.fork) = 0;
+	pthread_mutex_unlock(p->l.check);
+	pthread_mutex_lock(p->r.check);
+	*(p->r.fork) = 0;
+	pthread_mutex_unlock(p->r.check);
 }
 
 int	yeeat(t_philo *p)

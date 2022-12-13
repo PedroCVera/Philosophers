@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:27:41 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/13 14:50:13 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:01:12 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ int	ft_atoi_phil(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 		result = (result * 10) + (j * (str[i++] - '0'));
 	if (result > 2147483647 || result < 0)
-			return (0);
+		return (0);
 	return (result);
 }
 
 unsigned long	time_philo(void)
 {
-	struct timeval time;
+	struct timeval	time;
 
 	gettimeofday(&time, NULL);
 	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));

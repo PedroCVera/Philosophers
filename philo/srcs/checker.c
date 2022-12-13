@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:16:31 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/02 17:16:59 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:02:19 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	processnum(int argc, char **argv, t_info *i)
 		i->philo_eat = ft_atoi_phil(argv[5]);
 	else
 		i->philo_eat = -3;
-	if (!i->philo_nbr || !i->tt_d|| !i->tt_d || !i->philo_eat || !i->tt_e)
+	if (!i->philo_nbr || !i->tt_d || !i->tt_d || !i->philo_eat || !i->tt_e)
 	{
 		printf("0 < num < 2147483648 UwU\n");
 		return (1);

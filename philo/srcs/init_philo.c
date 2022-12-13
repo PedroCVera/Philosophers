@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:46:15 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/13 17:53:09 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:02:43 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	mutex_init(t_philo **p, int philo_nbr)
 	pthread_mutex_t	*print;
 	pthread_mutex_t	*dead;
 	int				i;
-	
+
 	print = (malloc(sizeof(pthread_mutex_t) * philo_nbr));
 	dead = (malloc(sizeof(pthread_mutex_t) * philo_nbr));
 	if (!dead || !print)
@@ -50,7 +50,7 @@ int	create_forks(t_forks **forks, int n_phil)
 	(*forks) = malloc(sizeof(t_forks) * n_phil);
 	(check) = malloc(sizeof(pthread_mutex_t) * n_phil);
 	if (!(*forks) || !check)
-		return (error_forks(forks, check));
+		return (error_forks(*forks, check));
 	while (++i < n_phil)
 	{
 		(*forks)[i].fork = &(f[i]);
@@ -68,16 +68,16 @@ int	philo_allocation(t_forks **f, t_info *d, t_philo **p, int *ded)
 	if (!(*p))
 		return (1);
 	ind = -1;
-	while(++ind < d->philo_nbr)
+	while (++ind < d->philo_nbr)
 	{
 		(*p)[ind].dead = ded;
 		(*p)[ind].nbr = ind + 1;
-		(*p)[ind].R = (*f)[ind];
+		(*p)[ind].r = (*f)[ind];
 		(*p)[ind].times_eat = 0;
 		if (ind == 0)
-			(*p)[ind].L = (*f)[d->philo_nbr - 1];
+			(*p)[ind].l = (*f)[d->philo_nbr - 1];
 		else
-			(*p)[ind].L = (*f)[ind - 1];
+			(*p)[ind].l = (*f)[ind - 1];
 		(*p)[ind].data = d;
 	}
 	return (0);

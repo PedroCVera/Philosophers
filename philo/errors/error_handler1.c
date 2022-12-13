@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:04:28 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/13 17:09:41 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:00:41 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	end_free(t_philo *p, t_forks *forks, t_info d)
 	while (++i < d.philo_nbr)
 	{
 		pthread_mutex_destroy(forks[i].check);
-		pthread_mutex_destroy(p[i].R.check);
+		pthread_mutex_destroy(p[i].r.check);
 	}
 	free(p->print);
 	free(p->d_check);

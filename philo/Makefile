@@ -6,7 +6,7 @@
 #    By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:11:28 by pcoimbra          #+#    #+#              #
-#    Updated: 2022/12/13 16:42:33 by pcoimbra         ###   ########.fr        #
+#    Updated: 2022/12/13 17:57:09 by pcoimbra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRCS_		=	srcs/philo.c \
 					srcs/init_philo.c \
 					srcs/checker.c \
 					utils/death+print.c \
-					utils/routine_utils.c 
+					utils/routine_utils.c \
+					errors/error_handler1.c
 
 SRCS		=	$(addprefix $(_SRC), $(SRCS_))
 
