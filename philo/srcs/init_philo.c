@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:46:15 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/07 19:07:49 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:18:18 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,26 @@ int	mutex_init(t_philo **p, int philo_nbr)
 	return (0);
 }
 
-int	create_forks(t_forks **forks, int philo_nbr)
+int	create_forks(t_forks **forks, int n_phil)
 {
 	int				i;
+	int				*f;
 	pthread_mutex_t	*check;
 
-	i = -1;
-	(*forks) = malloc(sizeof(t_forks) * philo_nbr);
-	(check) = malloc(sizeof(pthread_mutex_t) * philo_nbr);
-	if (!forks || !check)
+	f = malloc(sizeof(int) * n_phil);
+	if (!f)
 		return (1);
-	while (++i < philo_nbr)
+	i = -1;
+	while (++i < n_phil)
+		f[i] = 0;
+	i = -1;
+	(*forks) = malloc(sizeof(t_forks) * n_phil);
+	(check) = malloc(sizeof(pthread_mutex_t) * n_phil);
+	if (!(*forks) || !check)
+		return (1);
+	while (++i < n_phil)
 	{
-		(*forks)[i].fork = 0;
+		(*forks)[i].fork = &(f[i]);
 		pthread_mutex_init(&((check)[i]), NULL);
 		(*forks)[i].check = &(check[i]);
 	}

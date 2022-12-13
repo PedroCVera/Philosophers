@@ -6,12 +6,12 @@
 #    By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 14:11:28 by pcoimbra          #+#    #+#              #
-#    Updated: 2022/12/09 17:12:42 by pcoimbra         ###   ########.fr        #
+#    Updated: 2022/12/13 16:32:57 by pcoimbra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror -g # -fsanitize=thread
+CFLAGS		=	-Wall -Wextra -Werror -g #-fsanitize=thread
 RM			=	rm -f
 
 NAME		=	philo
@@ -22,7 +22,7 @@ SRCS_		=	srcs/philo.c \
 					utils/utils1.c \
 					srcs/init_philo.c \
 					srcs/checker.c \
-					utils/routine_utils1.c \
+					utils/death+print.c \
 					utils/routine_utils.c 
 
 SRCS		=	$(addprefix $(_SRC), $(SRCS_))

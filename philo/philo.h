@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:22:12 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/09 17:12:01 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:07:13 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 typedef struct s_fork
 {
-	int				fork;
+	int				*fork;
 	pthread_mutex_t	*check;
 }					t_forks;
 
@@ -73,8 +73,9 @@ unsigned long	time_now(t_philo *p);
 
 //	routine_utils.c
 
-int	xonar(t_philo *philo, unsigned long time);
-int	yeeat(t_philo *p);
+void			fkysleep(unsigned long time);
+int				xonar(t_philo *philo, unsigned long time);
+int				yeeat(t_philo *p);
 
 //	routine_utils1.c
 

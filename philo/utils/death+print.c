@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine_utils1.c                                   :+:      :+:    :+:   */
+/*   death+print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:33:41 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/09 17:12:13 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/13 15:59:31 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ void	philo_print(t_philo *p, char *str)
 
 void	print_eat(t_philo *p)
 {
-		philo_print(p, "has taken a fork");
-		philo_print(p, "is eating");
+	pthread_mutex_lock((*p).print);
+	printf("%lu %d %s", time_now(p), (*p).nbr, "has taken a fork\n");
+	printf("%lu %d %s", time_now(p), (*p).nbr, "is eating\n");
+	pthread_mutex_unlock((*p).print);
 }
 
 int	checker_deader(t_philo *p)
@@ -32,7 +34,7 @@ int	checker_deader(t_philo *p)
 	if ((time_now(p) - p->last_eat) >= p->data->tt_d)
 	{
 		pthread_mutex_lock(p->d_check);
-		p->dead++;
+		(*p->dead)++;
 		if (*(p->dead) == 1)
 			philo_print(p, "died");
 		pthread_mutex_unlock(p->d_check);

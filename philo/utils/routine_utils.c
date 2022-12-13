@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:37:33 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/09 17:10:15 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:22:48 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	fork_taker(t_philo *p)
 	while (checker_deader(p) == 0)
 	{
 		pthread_mutex_lock(p->R.check);
-		if (p->R.fork == 0)
+		if (*(p->R.fork) == 0)
 		{
-			p->R.fork = 1;
+			*(p->R.fork) = 1;
 			pthread_mutex_unlock(p->R.check);
 			break ;
 		}
@@ -30,9 +30,9 @@ void	fork_taker(t_philo *p)
 	while (checker_deader(p) == 0)
 	{
 		pthread_mutex_lock(p->L.check);
-		if (p->L.fork == 0)
+		if (*(p->L.fork) == 0)
 		{
-			p->L.fork = 1;
+			*(p->L.fork) = 1;
 			pthread_mutex_unlock(p->L.check);
 			break ;
 		}
@@ -63,24 +63,32 @@ int	yeeat(t_philo *p)
 	return (0);
 }
 
-int	xonar(t_philo *philo, unsigned long time)
+int	xonar(t_philo *p, unsigned long time)
 {
-	unsigned long	timepassed;
-	unsigned long	start;
+	unsigned long	s_start;
+	unsigned long	t_passed;
 
-	start = time_now(philo);
-	timepassed = 0;
-	while (timepassed <= time && !checker_deader(philo))
+	t_passed = 0;
+	s_start = time_now(p);
+	while (!checker_deader(p) && !(t_passed >= time))
 	{
-		if (!check_dead(philo))
-		{
-			usleep(100);
-			timepassed = time_now(philo) - start;
-		}
-		else
+		if (check_dead(p))
 			return (1);
+		usleep(100);
+		t_passed = time_now(p) - s_start;
 	}
-	if (timepassed >= time)
+	if (t_passed >= time)
 		return (0);
 	return (1);
+}
+
+void	fkysleep(unsigned long time)
+{
+	unsigned long	timepassed;
+	unsigned long	st;
+
+	st = time_philo();
+	timepassed = 0;
+	while (timepassed < time)
+		timepassed = time_philo() - st;
 }
