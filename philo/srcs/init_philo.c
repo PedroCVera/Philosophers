@@ -6,7 +6,7 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:46:15 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/13 16:18:18 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/13 17:53:09 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	mutex_init(t_philo **p, int philo_nbr)
 	if (!dead || !print)
 		return (1);
 	if (pthread_mutex_init((dead), NULL) || pthread_mutex_init((print), NULL))
-		return (1);
+		return (error_mutexes(print, dead));
 	i = 0;
 	while (i < philo_nbr)
 	{
@@ -50,7 +50,7 @@ int	create_forks(t_forks **forks, int n_phil)
 	(*forks) = malloc(sizeof(t_forks) * n_phil);
 	(check) = malloc(sizeof(pthread_mutex_t) * n_phil);
 	if (!(*forks) || !check)
-		return (1);
+		return (error_forks(forks, check));
 	while (++i < n_phil)
 	{
 		(*forks)[i].fork = &(f[i]);

@@ -6,11 +6,9 @@
 /*   By: pcoimbra <pcoimbra@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:23:56 by pcoimbra          #+#    #+#             */
-/*   Updated: 2022/12/13 16:43:01 by pcoimbra         ###   ########.fr       */
+/*   Updated: 2022/12/13 17:11:36 by pcoimbra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../philo.h"
 
 #include "../philo.h"
 
@@ -21,7 +19,7 @@ void	*philo_stuff(void *cenas)
 	p = (t_philo *)cenas;
 	p->last_eat = 0;
 	if ((p->nbr % 2) == 0)
-		usleep(10000);
+		usleep(p->data->tt_e * 1000);
 	while (checker_deader(p) == 0)
 	{
 		yeeat(p);
@@ -58,5 +56,5 @@ int	main(int argc, char **argv)
 	ind = -1;
 	while (++ind < i.philo_nbr)
 		pthread_join(p[ind].id, NULL);
-//	end_free(p, f, i);
+	end_free(p, f, i);
 }
